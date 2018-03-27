@@ -31,10 +31,10 @@ def get_jobs_detail(html):
     soup = BeautifulSoup(html, "html.parser")
     pagetitle = soup.select('h2[id="pagetitle"]')[0].text.strip()
 
-    program_profile_section = soup.select('div[class="section program-profile-section"]')[0].select('span[class="media-heading"]')
+    program_profile_section = soup.select('div[class="section program-profile-section"]')
 
     if not program_profile_section == []:
-        for x in program_profile_section:
+        for x in program_profile_section[0].select('span[class="media-heading"]'):
             training_list.append(x.text)
         training  = ','.join([x for x in training_list])
 
